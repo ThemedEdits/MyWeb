@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portfolio | Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/darkmode.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body class="light-mode">
+    <div id="pageLoader" class="page-loader">
+  <div class="dot dot1"></div>
+  <div class="dot dot2"></div>
+  <div class="dot dot3"></div>
+</div>
+
+  <!-- Header/Navbar -->
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">ClientLogo</a></div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button id="darkModeToggle">🌙</button>
+      <div id="hamburger" class="menu-toggle">☰</div>
+    </div>
+  </nav>
+</header>
+
+  <!-- Main Content -->
+<main class="contact-page">
+  <section>
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+  <input type="text" id="name" placeholder="Name" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="text" id="subject" placeholder="Subject" required />
+  <textarea id="message" placeholder="Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+<p id="formMessage"></p>
+  </section>
+</main>
+
+<script src="js/contact.js" defer></script>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Client Name. All rights reserved.</p>
+  </footer>
+</body>
+</html>

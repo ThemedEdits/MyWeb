@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portfolio | Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/darkmode.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <!-- Firebase -->
+<!-- Correct Firebase UMD SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase.js" defer></script>
+
+</head>
+<body class="light-mode">
+    <div id="pageLoader" class="page-loader">
+  <div class="dot dot1"></div>
+  <div class="dot dot2"></div>
+  <div class="dot dot3"></div>
+</div>
+
+  <!-- Header/Navbar -->
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">ClientLogo</a></div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button id="darkModeToggle">🌙</button>
+      <div id="hamburger" class="menu-toggle">☰</div>
+    </div>
+  </nav>
+</header>
+
+  <!-- Main Content -->
+<main class="testimonials-page">
+  <section class="testimonials-form-section">
+    <h2>Leave a Testimonial</h2>
+    <form id="testimonialForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" rows="4" placeholder="Your Feedback" required></textarea>
+      
+      <label>Rating:</label>
+      <div id="rating-stars">
+        <span data-value="1">⭐</span>
+        <span data-value="2">⭐</span>
+        <span data-value="3">⭐</span>
+        <span data-value="4">⭐</span>
+        <span data-value="5">⭐</span>
+      </div>
+
+      <input type="hidden" id="rating" value="0" />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section class="testimonials-display">
+    <h2>What Clients Say</h2>
+    <div id="testimonialList"></div>
+  </section>
+</main>
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Client Name. All rights reserved.</p>
+  </footer>
+</body>
+</html>
