@@ -21,11 +21,18 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER,
-      subject: `[Portfolio] ${subject}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
-    });
+  from: `"Portfolio Form" <${process.env.EMAIL_USER}>`, // always your email
+  to: process.env.EMAIL_RECEIVER,
+  subject: `[Portfolio] ${subject}`,
+  replyTo: email, // ✅ lets you reply directly to user
+  text: `
+Name: ${name}
+Email: ${email}
+Message:
+${message}
+  `,
+});
+
 
     return res.status(200).json({ message: "Email sent" });
   } catch (err) {
