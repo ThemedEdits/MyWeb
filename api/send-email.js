@@ -24,17 +24,12 @@ export default async function handler(req, res) {
       from: `"${name}" <${email}>`,
       to: process.env.EMAIL_RECEIVER,
       subject: `[Portfolio] ${subject}`,
-      text: `
-Name: ${name}
-Email: ${email}
-Message:
-${message}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
     });
 
     return res.status(200).json({ message: "Email sent" });
   } catch (err) {
-    console.error("❌ Email error:", err); // Log to Vercel
-    return res.status(500).json({ error: "Server failed to send email." });
+    console.error("❌ Email sending failed:", err);
+    return res.status(500).json({ error: "A server error has occurred" });
   }
 }
