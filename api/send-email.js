@@ -12,22 +12,19 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Setup transporter using Gmail
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,    // your Gmail
-        pass: process.env.EMAIL_PASS     // Gmail app password
-      }
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
     });
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_RECEIVER,    // your receiving email
+      to: process.env.EMAIL_RECEIVER,
       subject: `[Portfolio] ${subject}`,
       text: `
-You received a new message:
-
 Name: ${name}
 Email: ${email}
 Message:
@@ -35,9 +32,9 @@ ${message}
       `,
     });
 
-    res.status(200).json({ success: true, message: "Email sent!" });
+    return res.status(200).json({ message: "Email sent" });
   } catch (err) {
-    console.error("Email error:", err);
-    res.status(500).json({ error: "Failed to send email." });
+    console.error("❌ Email error:", err); // Log to Vercel
+    return res.status(500).json({ error: "Server failed to send email." });
   }
 }

@@ -9,25 +9,26 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 
   formMessage.textContent = "Sending...";
 
-  try {
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, subject, message }),
-    });
+try {
+  const res = await fetch("/api/send-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, subject, message }),
+  });
 
-    const result = await res.json();
-
-    if (res.ok) {
-      formMessage.textContent = "Message sent successfully!";
-      e.target.reset();
-    } else {
-      formMessage.textContent = result.error || "Something went wrong.";
-    }
-  } catch (err) {
-    formMessage.textContent = "Failed to send message.";
-    console.error(err);
+  if (!res.ok) {
+    const text = await res.text(); // fallback if it's not JSON
+    throw new Error(text || "Server error");
   }
+
+  const result = await res.json();
+  formMessage.textContent = "Message sent successfully!";
+  form.reset();
+} catch (err) {
+  console.error("❌", err);
+  formMessage.textContent = "Error: " + err.message;
+}
+
 });
 
 
